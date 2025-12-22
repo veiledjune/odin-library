@@ -8,6 +8,10 @@ function Book(title, author, pages, read) {
   this.id = crypto.randomUUID();
 }
 
+Book.prototype.toggleRead = function () {
+  this.read = !this.read;
+};
+
 function addBookToLibrary(book) {
   myLibrary.push(book);
 }
@@ -37,6 +41,10 @@ function renderBooks() {
     const bookReadContainer = createElement('div', 'book__read');
     const bookReadSpan = createElement('span', 'book__read-span', 'Read');
     const bookReadButton = createElement('button', 'button__toggle-read');
+    bookReadButton.addEventListener('click', () => {
+      book.toggleRead();
+      renderBooks();
+    });
     const bookReadIcon = createElement('img', 'button__read-icon');
     bookReadIcon.src = `icons/read-${book.read}.svg`;
     bookReadButton.appendChild(bookReadIcon);
@@ -79,6 +87,7 @@ function events() {
     const bookSelectedReadInput = document.querySelector(
       'input[name="read"]:checked'
     );
+    const bookRead = bookSelectedReadInput.value === 'false' ? false : true;
     event.preventDefault();
     const isValid = form.checkValidity();
     if (!isValid) {
@@ -90,7 +99,7 @@ function events() {
           bookTitleInput.value,
           bookAuthorInput.value,
           bookPagesInput.value,
-          bookSelectedReadInput.value
+          bookRead
         )
       );
       form.reset();

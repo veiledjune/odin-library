@@ -24,6 +24,10 @@ body {
   background-color: rgb(241, 238, 238);
 }
 
+button {
+  cursor: pointer;
+}
+
 /*Main*/
 
 .main {

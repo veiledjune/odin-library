@@ -42,7 +42,16 @@ function renderBooks() {
     bookReadButton.appendChild(bookReadIcon);
     bookReadContainer.append(bookReadSpan, bookReadButton);
     bookBottom.append(bookPages, bookReadContainer);
-    bookElement.append(bookTop, bookBottom);
+    const bookDeleteButton = createElement(
+      'button',
+      'button__delete-book',
+      'Delete'
+    );
+    bookDeleteButton.dataset.id = book.id;
+    bookDeleteButton.addEventListener('click', () =>
+      deleteBook(bookDeleteButton)
+    );
+    bookElement.append(bookTop, bookBottom, bookDeleteButton);
     libraryContainer.appendChild(bookElement);
   });
 }
@@ -88,6 +97,13 @@ function events() {
       renderBooks();
     }
   });
+}
+
+function deleteBook(button) {
+  const id = button.dataset.id;
+  const index = myLibrary.findIndex((book) => id === book.id);
+  myLibrary.splice(index);
+  renderBooks();
 }
 
 events();

@@ -73,6 +73,7 @@ button {
   border-left: 200px solid rgb(170, 37, 104);
   border-radius: 10px;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
+  position: relative;
 }
 
 .book__bottom {
@@ -115,6 +116,17 @@ button {
 
 .button__read-icon {
   width: 25px;
+}
+
+.button__delete-book {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border: none;
+  background-color: rgb(168, 36, 36);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 5px;
 }
 
 /*Form*/

@@ -20,35 +20,32 @@ addBookToLibrary(
   new Book('The Fellowship of the Ring', 'J.R.R Tolkien', 300, true)
 );
 
+function createElement(type, className, textContent) {
+  const element = document.createElement(type);
+  element.classList.add(className);
+  element.textContent = textContent;
+  return element;
+}
+
 function renderBooks() {
   const libraryContainer = document.querySelector('.library__content');
   libraryContainer.textContent = '';
   myLibrary.forEach((book) => {
-    const bookElement = document.createElement('div');
-    bookElement.classList.add('book');
-    const bookTop = document.createElement('div');
-    bookTop.classList.add('book__top');
-    const bookTitle = document.createElement('h3');
-    bookTitle.classList.add('book__title');
-    bookTitle.textContent = book.title;
-    const bookAuthor = document.createElement('span');
-    bookAuthor.classList.add('book__author');
-    bookAuthor.textContent = book.author;
+    const bookElement = createElement('div', 'book');
+    const bookTop = createElement('div', 'book_top');
+    const bookTitle = createElement('h3', 'book__title', book.title);
+    const bookAuthor = createElement('span', 'book__author', book.author);
     bookTop.append(bookTitle, bookAuthor);
-    const bookBottom = document.createElement('div');
-    bookBottom.classList.add('book__bottom');
-    const bookPages = document.createElement('span');
-    bookPages.classList.add('book__pages');
-    bookPages.textContent = 'Pages ' + book.pages;
-    const bookReadContainer = document.createElement('div');
-    bookReadContainer.classList.add('book__read');
-    const bookReadSpan = document.createElement('span');
-    bookReadSpan.classList.add('book__read-span');
-    bookReadSpan.textContent = 'Read';
-    const bookReadButton = document.createElement('button');
-    bookReadButton.classList.add('button__toggle-read');
-    const bookReadIcon = document.createElement('img');
-    bookReadIcon.classList.add('button__read-icon');
+    const bookBottom = createElement('div', 'book__bottom');
+    const bookPages = createElement(
+      'span',
+      'book__pages',
+      'Pages ' + book.pages
+    );
+    const bookReadContainer = createElement('div', 'book__read');
+    const bookReadSpan = createElement('span', 'book__read-span', 'Read');
+    const bookReadButton = createElement('button', 'button__toggle-read');
+    const bookReadIcon = createElement('img', 'button__read-icon');
     bookReadIcon.src = `icons/read-${book.read}.svg`;
     bookReadButton.appendChild(bookReadIcon);
     bookReadContainer.append(bookReadSpan, bookReadButton);

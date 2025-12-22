@@ -12,14 +12,6 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
-addBookToLibrary(
-  new Book('The Fellowship of the Ring', 'J.R.R Tolkien', 300, true)
-);
-
-addBookToLibrary(
-  new Book('The Fellowship of the Ring', 'J.R.R Tolkien', 300, true)
-);
-
 function createElement(type, className, textContent) {
   const element = document.createElement(type);
   element.classList.add(className);
@@ -98,5 +90,4 @@ function events() {
   });
 }
 
-renderBooks();
 events();

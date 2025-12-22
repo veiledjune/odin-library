@@ -58,8 +58,16 @@ function renderBooks() {
 function events() {
   const addBookButton = document.querySelector('.library__new-book-btn');
   const dialog = document.querySelector('.book-form-dialog');
+  const form = document.querySelector('.book-form');
+
   addBookButton.addEventListener('click', () => {
     dialog.showModal();
+  });
+
+  const formCancelButton = document.querySelector('.book-form__cancel-btn');
+  formCancelButton.addEventListener('click', () => {
+    dialog.close();
+    form.reset();
   });
 }
 

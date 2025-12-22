@@ -56,18 +56,45 @@ function renderBooks() {
 }
 
 function events() {
-  const addBookButton = document.querySelector('.library__new-book-btn');
   const dialog = document.querySelector('.book-form-dialog');
   const form = document.querySelector('.book-form');
 
+  const addBookButton = document.querySelector('.library__new-book-btn');
   addBookButton.addEventListener('click', () => {
     dialog.showModal();
   });
 
-  const formCancelButton = document.querySelector('.book-form__cancel-btn');
-  formCancelButton.addEventListener('click', () => {
+  const formCloseButton = document.querySelector('.book-form__close-btn');
+  formCloseButton.addEventListener('click', () => {
     dialog.close();
     form.reset();
+  });
+
+  const submitButton = document.querySelector('.book-form__add-btn');
+  submitButton.addEventListener('click', (event) => {
+    const bookTitleInput = document.getElementById('book-title');
+    const bookAuthorInput = document.getElementById('book-author');
+    const bookPagesInput = document.getElementById('book-pages');
+    const bookSelectedReadInput = document.querySelector(
+      'input[name="read"]:checked'
+    );
+    event.preventDefault();
+    const isValid = form.checkValidity();
+    if (!isValid) {
+      form.reportValidity();
+      return;
+    } else {
+      addBookToLibrary(
+        new Book(
+          bookTitleInput.value,
+          bookAuthorInput.value,
+          bookPagesInput.value,
+          bookSelectedReadInput.value
+        )
+      );
+      form.reset();
+      renderBooks();
+    }
   });
 }
 

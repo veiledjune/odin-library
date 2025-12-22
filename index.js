@@ -55,6 +55,13 @@ function renderBooks() {
   });
 }
 
-renderBooks();
+function events() {
+  const addBookButton = document.querySelector('.library__new-book-btn');
+  const dialog = document.querySelector('.book-form-dialog');
+  addBookButton.addEventListener('click', () => {
+    dialog.showModal();
+  });
+}
 
-console.log(myLibrary);
+renderBooks();
+events();

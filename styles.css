@@ -116,3 +116,60 @@ button {
 .button__read-icon {
   width: 25px;
 }
+
+/*Form*/
+
+.book-form {
+  width: 400px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  padding: 1em;
+  position: fixed;
+  background-color: white;
+  left: 33%;
+  top: 25%;
+}
+
+fieldset {
+  border: none;
+}
+
+.book-form__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+  margin-bottom: 0.5em;
+}
+
+.book-form__inputs input {
+  border: none;
+  padding: 5px 15px;
+  background-color: lightgrey;
+  font-size: 1rem;
+}
+
+.book-form__inputs input:focus {
+  outline: 1px solid rgb(28, 96, 114);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+.book-form__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.book-form__buttons button {
+  padding: 5px 22px;
+  border: none;
+  font-size: 1rem;
+  color: white;
+  border-radius: 3px;
+}
+
+.book-form__add-btn {
+  background-color: rgb(47, 133, 63);
+}
+
+.book-form__cancel-btn {
+  background-color: rgb(143, 41, 41);
+}

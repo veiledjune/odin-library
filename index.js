@@ -111,7 +111,7 @@ function events() {
 function deleteBook(button) {
   const id = button.dataset.id;
   const index = myLibrary.findIndex((book) => id === book.id);
-  myLibrary.splice(index);
+  myLibrary.splice(index, 1);
   renderBooks();
 }
 
